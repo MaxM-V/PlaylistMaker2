@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Blue"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_gravity="start"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        />
+    <Button
+        android:id="@+id/find"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:icon="@drawable/magnifier"
+        app:iconGravity="textStart"
+        app:iconTint="@color/black"
+
+        android:drawablePadding="8dp"
+        android:text="@string/Button_1"
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        app:cornerRadius="16dp"
+
+        />
+<Button
+    android:id="@+id/media"
+    android:backgroundTint="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    app:icon="@drawable/note"
+    app:iconGravity="textStart"
+    app:iconTint="@color/black"
+    android:drawablePadding="8dp"
+    android:text="@string/Button_2"
+    android:textAllCaps="false"
+    android:textSize="22sp"
+    android:textColor="@color/black"
+    app:cornerRadius="16dp"
+
+    />
+    <Button
+        android:id="@+id/sett"
+        android:backgroundTint="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:drawablePadding="8dp"
+        android:text="@string/Button_3"
+        android:textAllCaps="false"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        app:cornerRadius="16dp"
+        app:icon="@drawable/settings"
+        app:iconGravity="textStart"
+        app:iconTint="@color/black"
+        />
+</LinearLayout>
