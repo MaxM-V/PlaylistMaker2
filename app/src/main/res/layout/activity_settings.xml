@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="@color/white"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:padding="@dimen/padding_medium"
     android:layout_gravity="start">
 
     <LinearLayout
@@ -15,19 +15,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="@dimen/margin_large"
 
-     >
+        >
 
         <ImageButton
             android:background="@null"
             android:id="@+id/arrowBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-          android:scaleType="center"
+            android:scaleType="center"
             android:src="@drawable/arrowbig"
-
-            android:padding="16dp"
+            android:padding="@dimen/padding_medium"
             app:tint="@color/black" />
 
         <TextView
@@ -36,8 +35,8 @@
 
             android:text="@string/TextSettings"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:layout_marginStart="0dp"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/zero"
             />
     </LinearLayout>
     <LinearLayout
@@ -45,7 +44,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/padding_medium"
         >
         <TextView
             android:layout_width="0dp"
@@ -53,8 +52,8 @@
             android:layout_weight="1"
             android:text="@string/TextSettingsButton2"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:layout_marginStart="0dp"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/zero"
             />
         <ImageButton
             android:background="@null"
@@ -63,16 +62,16 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:src="@drawable/resource_switch"
-            android:padding="8dp"
+            android:padding="@dimen/padding_small"
             app:tint="@color/black"
-            android:layout_marginEnd="0dp"/>
+            android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/padding_medium"
         >
         <TextView
             android:layout_width="0dp"
@@ -80,8 +79,8 @@
             android:layout_weight="1"
             android:text="@string/TextSettingsButton3"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:layout_marginStart="0dp"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/zero"
             />
         <ImageButton
             android:background="@null"
@@ -90,16 +89,16 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:src="@drawable/share"
-            android:padding="8dp"
+            android:padding="@dimen/padding_small"
             app:tint="@color/black"
-            android:layout_marginEnd="0dp"/>
+            android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/padding_medium"
         >
         <TextView
             android:layout_width="0dp"
@@ -107,8 +106,8 @@
             android:layout_weight="1"
             android:text="@string/TextSettingsButton4"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:layout_marginStart="0dp"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/zero"
             />
         <ImageButton
             android:background="@null"
@@ -117,16 +116,16 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:src="@drawable/support"
-            android:padding="8dp"
+            android:padding="@dimen/padding_small"
             app:tint="@color/black"
-            android:layout_marginEnd="0dp"/>
+            android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/padding_medium"
         >
         <TextView
             android:layout_width="0dp"
@@ -134,8 +133,8 @@
             android:layout_weight="1"
             android:text="@string/TextSettingsButton5"
             android:textColor="@color/black"
-            android:textSize="22sp"
-            android:layout_marginStart="0dp"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/zero"
             />
         <ImageButton
             android:background="@null"
@@ -144,8 +143,8 @@
             android:layout_height="wrap_content"
             android:scaleType="center"
             android:src="@drawable/arrowf"
-            android:padding="8dp"
+            android:padding="@dimen/padding_small"
             app:tint="@color/black"
-            android:layout_marginEnd="0dp"/>
+            android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
 </LinearLayout>
