@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/white"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="@dimen/padding_medium"
     android:layout_gravity="start">
@@ -27,7 +27,7 @@
             android:scaleType="center"
             android:src="@drawable/arrowbig"
             android:padding="@dimen/padding_medium"
-            app:tint="@color/black" />
+            app:tint="@color/BlackGrey" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:scaleType="center"
             android:src="@drawable/resource_switch"
             android:padding="@dimen/padding_small"
-            app:tint="@color/black"
+            app:tint="@color/Grey"
             android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
     <LinearLayout
@@ -90,7 +90,7 @@
             android:scaleType="center"
             android:src="@drawable/share"
             android:padding="@dimen/padding_small"
-            app:tint="@color/black"
+            app:tint="@color/Grey"
             android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
     <LinearLayout
@@ -117,7 +117,7 @@
             android:scaleType="center"
             android:src="@drawable/support"
             android:padding="@dimen/padding_small"
-            app:tint="@color/black"
+            app:tint="@color/Grey"
             android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
     <LinearLayout
@@ -144,7 +144,7 @@
             android:scaleType="center"
             android:src="@drawable/arrowf"
             android:padding="@dimen/padding_small"
-            app:tint="@color/black"
+            app:tint="@color/Grey"
             android:layout_marginEnd="@dimen/zero"/>
     </LinearLayout>
 </LinearLayout>
