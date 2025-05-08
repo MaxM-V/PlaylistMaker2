@@ -9,17 +9,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MediaActivity : AppCompatActivity() {
+class MActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_media)
-       val buttonB = findViewById<ImageButton>(R.id.arrowBack)
+        setContentView(R.layout.activity_m)
+        val buttonB = findViewById<ImageButton>(R.id.arrowBack)
         buttonB.setOnClickListener{val dIntent = Intent(this, MainActivity::class.java)
-        startActivity(dIntent)
-        }
+            startActivity(dIntent)
         }
     }
-
-
-
+}

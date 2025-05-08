@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         val buttonS = findViewById<Button>(R.id.sett)
 
 
-        buttonM.setOnClickListener{ val dIntent = Intent(this, MediaActivity::class.java)
+        buttonM.setOnClickListener{ val dIntent = Intent(this, MActivity::class.java)
             startActivity(dIntent) }
         buttonF.setOnClickListener{ val dIntent = Intent(this, FindActivity::class.java)
             startActivity(dIntent) }
-        buttonS.setOnClickListener{ val dIntent = Intent(this, SettingsActivity::class.java)
+        buttonS.setOnClickListener{ val dIntent = Intent(this, StActivity::class.java)
             startActivity(dIntent) }
 
     }

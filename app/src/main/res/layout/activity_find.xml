@@ -3,10 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_medium"
+    android:background="?attr/colorOnSecondary"
+    android:layout_gravity="start"
     tools:context=".FindActivity">
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,21 +21,16 @@
         >
 
         <ImageButton
-            android:background="@null"
+            style="@style/ImageButtonSettingsBackArrow"
             android:id="@+id/arrowBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="center"
-            android:src="@drawable/arrowbig"
-            android:padding="@dimen/padding_medium"
-            app:tint="@color/BlackGrey" />
+             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:text="@string/Button_1"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorSecondaryVariant"
             android:textSize="@dimen/text_medium"
             android:layout_marginStart="@dimen/zero"
             />

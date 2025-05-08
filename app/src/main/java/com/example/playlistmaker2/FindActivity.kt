@@ -14,7 +14,6 @@ class FindActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_find)
-
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
         buttonBack.setOnClickListener{val dIntent = Intent(this, MainActivity::class.java)
         startActivity(dIntent)
