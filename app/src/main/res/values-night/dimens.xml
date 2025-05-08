@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <dimen name= "padding_small">8dp</dimen>
+    <dimen name= "padding_medium">16dp</dimen>
+    <dimen name= "padding_large">24dp</dimen>
+    <dimen name= "margin_small">8dp</dimen>
+    <dimen name= "margin_medium">16dp</dimen>
+    <dimen name= "margin_large">24dp</dimen>
+    <dimen name= "text_small">16dp</dimen>
+    <dimen name= "text_medium">22sp</dimen>
+    <dimen name= "text_large">16dp</dimen>
+    <dimen name= "zero">0dp</dimen>
+    <dimen name= "radius_b">16dp</dimen>
+</resources>
