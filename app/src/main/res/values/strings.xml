@@ -9,5 +9,11 @@
     <string name="TextSettingsButton3">Поделиться приложением</string>
     <string name="TextSettingsButton4">Написать в поддержку</string>
     <string name="TextSettingsButton5">Пользовательское соглашение</string>
+    <string name="RecommendYP">Курс по Android-разработке https://practicum.yandex.ru/android-developer/</string>
+    <string name="MailUser">maxm.v@mail.ru</string>
+    <string name="TextSendToSupport">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
+    <string name="ThxtoDev">Спасибо разработчикам и разработчицам за крутое приложение!</string>
+
+
 
 </resources>
