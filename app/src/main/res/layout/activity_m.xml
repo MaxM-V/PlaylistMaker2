@@ -10,7 +10,7 @@
     android:padding="@dimen/padding_medium"
     android:background="?attr/colorOnSecondary"
     android:layout_gravity="start"
-    tools:context=".MediaActivity">
+    tools:context=".MActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
