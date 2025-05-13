@@ -6,23 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/padding_medium"
+    android:padding="4dp"
+    android:paddingBottom="0dp"
     android:background="?attr/colorOnSecondary"
     android:layout_gravity="start"
     tools:context=".FindActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+android:padding="4dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginBottom="0dp"
 
         >
 
         <ImageButton
             style="@style/ImageButtonSettingsBackArrow"
             android:id="@+id/arrowBack"
+
              />
 
         <TextView
@@ -33,6 +35,53 @@
             android:textColor="?attr/colorSecondaryVariant"
             android:textSize="@dimen/text_medium"
             android:layout_marginStart="@dimen/zero"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="12dp"
             />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/container"
+        android:background="@drawable/b_g_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+       android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+
+        android:padding="8dp"
+        android:orientation="horizontal"
+
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_gravity="center"
+            android:src="@drawable/magnifier"
+            android:visibility="visible" />
+<EditText
+    android:id="@+id/inputSearch"
+    android:background="@null"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:hint="@string/SearchText"
+    android:inputType="text"
+
+    android:maxLength="50"
+    android:maxLines="1"
+    android:textColor="?attr/colorSecondaryVariant"
+    android:textColorHint="?attr/colorPrimaryVariant"
+    android:paddingHorizontal="8dp"/>
+        <ImageView
+            android:id="@+id/clearIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:visibility="gone" />
+
+        </LinearLayout>
 </LinearLayout>
