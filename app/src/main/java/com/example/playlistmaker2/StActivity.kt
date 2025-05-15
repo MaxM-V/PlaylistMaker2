@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import android.net.Uri
 import android.widget.Button
+import android.widget.LinearLayout
 
 class StActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,10 +17,10 @@ class StActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_st)
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
-        val buttonShare = findViewById<ImageButton>(R.id.share)
-        val buttonSwitch = findViewById<ImageButton>(R.id.switchS)
-        val buttonSupport = findViewById<ImageButton>(R.id.support)
-        val buttonUserAgreement = findViewById<ImageButton>(R.id.user)
+        val buttonShare = findViewById<LinearLayout>(R.id.share)
+        val buttonSwitch = findViewById<LinearLayout>(R.id.switchS)
+        val buttonSupport = findViewById<LinearLayout>(R.id.support)
+        val buttonUserAgreement = findViewById<LinearLayout>(R.id.user)
 
         buttonBack.setOnClickListener{val dIntent = Intent(this, MainActivity::class.java)
             startActivity(dIntent)

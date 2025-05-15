@@ -34,6 +34,10 @@
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"
+        android:id="@+id/switchS"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         >
         <TextView
 
@@ -42,11 +46,15 @@
             />
         <ImageButton
             style="@style/ImageButtonSetting"
-            android:id="@+id/switchS"
+
             android:src="@drawable/resource_switch" />
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"
+        android:id="@+id/share"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         >
         <TextView
             style="@style/TextButtonSettings"
@@ -54,39 +62,45 @@
             />
         <ImageButton
             style="@style/ImageButtonSetting"
-            android:id="@+id/share"
+
             android:src="@drawable/share"
             />
     </LinearLayout>
     <LinearLayout
+
         style="@style/ButtonDesk"
+        android:id="@+id/support"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         >
         <TextView
+
             style="@style/TextButtonSettings"
             android:text="@string/TextSettingsButton4"
             />
         <ImageButton
+
+
             style="@style/ImageButtonSetting"
-            android:id="@+id/support"
+
             android:src="@drawable/support"
             />
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"
+        android:id="@+id/user"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
         >
         <TextView
             style="@style/TextButtonSettings"
             android:text="@string/TextSettingsButton5"
             />
         <ImageButton
-            android:background="@null"
-            android:id="@+id/user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="center"
-            android:src="@drawable/arrowf"
-            android:padding="@dimen/padding_small"
-            app:tint="@color/Grey"
-            android:layout_marginEnd="@dimen/zero"/>
+            style="@style/ImageButtonSetting"
+            android:src="@drawable/arrowf"/>
+
     </LinearLayout>
 </LinearLayout>

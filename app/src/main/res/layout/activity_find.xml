@@ -63,10 +63,12 @@ android:padding="4dp"
             android:visibility="visible" />
 <EditText
     android:id="@+id/inputSearch"
-    android:background="@null"
+    android:background="@android:color/transparent"
+
     android:layout_width="0dp"
     android:layout_height="match_parent"
     android:layout_weight="1"
+
     android:hint="@string/SearchText"
     android:inputType="text"
 
@@ -74,12 +76,17 @@ android:padding="4dp"
     android:maxLines="1"
     android:textColor="?attr/colorSecondaryVariant"
     android:textColorHint="?attr/colorPrimaryVariant"
-    android:paddingHorizontal="8dp"/>
+    android:paddingHorizontal="8dp"
+
+    android:textColorHighlight="@color/textColorHl"
+    android:textCursorDrawable="@drawable/cursor"
+
+    />
         <ImageView
             android:id="@+id/clearIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+             android:layout_gravity="center"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:visibility="gone" />
 
