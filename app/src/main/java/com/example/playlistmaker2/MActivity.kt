@@ -14,9 +14,9 @@ class MActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_m)
-        val buttonB = findViewById<ImageButton>(R.id.arrowBack)
-        buttonB.setOnClickListener{val dIntent = Intent(this, MainActivity::class.java)
-            startActivity(dIntent)
+        val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
+        buttonBack.setOnClickListener{
+            finish()
         }
     }
 }

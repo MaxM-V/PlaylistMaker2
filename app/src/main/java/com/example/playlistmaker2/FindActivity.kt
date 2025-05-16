@@ -15,6 +15,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.view.inputmethod.InputMethodManager
+import android.content.Context
+
 
 class FindActivity : AppCompatActivity() {
     @SuppressLint("SuspiciousIndentation")
@@ -29,12 +32,13 @@ class FindActivity : AppCompatActivity() {
        val clearButton= findViewById<ImageView>(R.id.clearIcon)
       input = findViewById<EditText>(R.id.inputSearch)
 
-        buttonBack.setOnClickListener{val dIntent = Intent(this, MainActivity::class.java)
-        startActivity(dIntent)
+        buttonBack.setOnClickListener{
+            finish()
         }
 
         clearButton.setOnClickListener {
             input.setText("")
+            hideKB()
         }
         val simpleTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -52,7 +56,7 @@ class FindActivity : AppCompatActivity() {
             }
         }
         input.addTextChangedListener(simpleTextWatcher)
-        // логика по работе с введённым значением
+
     }
 
     private fun clearButtonVisibility(s: CharSequence?): Int {
@@ -80,31 +84,9 @@ val selectionStart = savedInstanceState.getInt("selectionStart")
             {input.requestFocus()}, 300)
     }
 
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
+    fun hideKB() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(input.windowToken, 0)
+    }
         }
 
-
-
-
-//class MainActivity : AppCompatActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//
-//
-//        val buttonF = findViewById<Button>(R.id.find)
-//        val buttonM = findViewById<Button>(R.id.media)
-//        val buttonS = findViewById<Button>(R.id.sett)
-//
-//        buttonS.setOnClickListener{ val dIntent = Intent(this, SettingsActivity::class.java)
-//            startActivity(dIntent) }
-//        buttonM.setOnClickListener{ val dIntent = Intent(this, MediaActivity::class.java)
-//            startActivity(dIntent) }
-//        buttonF.setOnClickListener{ val dIntent = Intent(this, FindActivity::class.java)
-//            startActivity(dIntent) }
-//
-//
-//    }

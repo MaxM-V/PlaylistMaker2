@@ -14,7 +14,8 @@
     <string name="TextSendToSupport">Сообщение разработчикам и разработчицам приложения Playlist Maker</string>
     <string name="ThxtoDev">Спасибо разработчикам и разработчицам за крутое приложение!</string>
     <string name="SearchText">Поиск</string>
-
-
+    <string name="URLYPLegal">https://yandex.ru/legal/practicum_offer</string>
+    <string name="ShareTitle">Поделиться приложением через:</string>
+    <string name="mailTo">mailto:</string>
 
 </resources>
