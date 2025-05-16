@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorOnSecondary"
     android:orientation="vertical"
-    android:padding="@dimen/padding_medium"
+
     android:layout_gravity="start"
     tools:context=".StActivity">
 
@@ -15,12 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:padding="@dimen/padding_small4"
         android:gravity="center_vertical"
-        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginBottom="12dp"
+
+
+
 
         >
         <ImageButton
             style="@style/ImageButtonSettingsBackArrow"
+
             android:id="@+id/arrowBack"
             />
         <TextView
@@ -29,12 +34,15 @@
             android:text="@string/TextSettings"
             android:textColor="?attr/colorSecondaryVariant"
             android:textSize="@dimen/text_medium"
-            android:layout_marginStart="@dimen/zero"
+            android:layout_marginStart="@dimen/margin_medium12"
+
             />
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"
         android:id="@+id/switchS"
+
+        android:layout_marginTop="20dp"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackground"
@@ -44,10 +52,13 @@
             style="@style/TextButtonSettings"
             android:text="@string/TextSettingsButton2"
             />
-        <ImageButton
-            style="@style/ImageButtonSetting"
 
-            android:src="@drawable/resource_switch" />
+        <ImageButton
+            style="@style/Switch"
+
+
+
+            />
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"

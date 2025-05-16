@@ -28,7 +28,7 @@ class FindActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_find)
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
-       val linearLayoutSearch = findViewById<LinearLayout>(R.id.container)
+       //val linearLayoutSearch = findViewById<LinearLayout>(R.id.container)
        val clearButton= findViewById<ImageView>(R.id.clearIcon)
       input = findViewById<EditText>(R.id.inputSearch)
 

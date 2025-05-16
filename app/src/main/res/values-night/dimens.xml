@@ -4,9 +4,12 @@
 <resources>
 
     <dimen name= "padding_small">8dp</dimen>
+    <dimen name= "padding_medium12">12dp</dimen>
     <dimen name= "padding_medium">16dp</dimen>
     <dimen name= "padding_large">24dp</dimen>
+    <dimen name= "padding_medium20">20dp</dimen>
     <dimen name= "margin_small">8dp</dimen>
+    <dimen name= "margin_medium12">12dp</dimen>
     <dimen name= "margin_medium">16dp</dimen>
     <dimen name= "margin_large">24dp</dimen>
     <dimen name= "text_small">16dp</dimen>
@@ -14,4 +17,5 @@
     <dimen name= "text_large">16dp</dimen>
     <dimen name= "zero">0dp</dimen>
     <dimen name= "radius_b">16dp</dimen>
+    <dimen name="padding_small4">4dp</dimen>
 </resources>
