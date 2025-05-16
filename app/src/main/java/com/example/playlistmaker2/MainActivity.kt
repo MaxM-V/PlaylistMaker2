@@ -30,25 +30,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-//        buttonS.setOnClickListener{
-//            val displayIntent = Intent(this, SettingsActivity::class.java)
-//            startActivity(displayIntent)
-//        }
-//        val buttonClickListener: View.OnClickListener = object : View.OnClickListener {
-//            override fun onClick(v: View?) { Toast.makeText(this@MainActivity, "Нажали на кнопку ничего не происходит тыкайте дальше", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//
-//        buttonF.setOnClickListener(buttonClickListener)
-//
-//       buttonM.setOnClickListener {
-//           (Toast.makeText(
-//               this@MainActivity,
-//               "Нажали на кнопку Лямбда",
-//               Toast.LENGTH_SHORT
-//           ).show())
-//       }
-//
-//        buttonS.setOnClickListener(buttonClickListener)
+
 
     }

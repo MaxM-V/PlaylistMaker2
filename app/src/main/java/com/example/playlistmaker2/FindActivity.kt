@@ -20,7 +20,7 @@ import android.content.Context
 
 
 class FindActivity : AppCompatActivity() {
-    @SuppressLint("SuspiciousIndentation")
+
     var searchText: String = ""
     lateinit var input:EditText
     override fun onCreate(savedInstanceState: Bundle?) {
