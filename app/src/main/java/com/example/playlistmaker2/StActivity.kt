@@ -14,7 +14,7 @@ import android.widget.LinearLayout
 class StActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_st)
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
         val buttonShare = findViewById<LinearLayout>(R.id.share)

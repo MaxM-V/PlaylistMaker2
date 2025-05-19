@@ -23,14 +23,16 @@ class FindActivity : AppCompatActivity() {
 
     var searchText: String = ""
     lateinit var input:EditText
+    val keyStart = "selectionStart"
+    val keyEnd ="selectionEnd"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_find)
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
-       //val linearLayoutSearch = findViewById<LinearLayout>(R.id.container)
-       val clearButton= findViewById<ImageView>(R.id.clearIcon)
-      input = findViewById<EditText>(R.id.inputSearch)
+
+        val clearButton= findViewById<ImageView>(R.id.clearIcon)
+        input = findViewById<EditText>(R.id.inputSearch)
 
         buttonBack.setOnClickListener{
             finish()
@@ -69,16 +71,16 @@ class FindActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putInt("selectionStart",input.selectionStart)
-        outState.putInt("selectionEnd",input.selectionEnd)
+        outState.putInt(keyStart,input.selectionStart)
+        outState.putInt(keyEnd,input.selectionEnd)
 
         outState.putString("SEARCH_TEXT", searchText)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-val selectionStart = savedInstanceState.getInt("selectionStart")
-        val selectionEnd = savedInstanceState.getInt("selectionEnd")
+val selectionStart = savedInstanceState.getInt(keyStart)
+        val selectionEnd = savedInstanceState.getInt(keyEnd)
         input.setSelection(selectionStart,selectionEnd)
         input.postDelayed(
             {input.requestFocus()}, 300)

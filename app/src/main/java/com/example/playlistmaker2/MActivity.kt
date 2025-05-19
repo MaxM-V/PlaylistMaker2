@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 class MActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
         setContentView(R.layout.activity_m)
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
         buttonBack.setOnClickListener{
