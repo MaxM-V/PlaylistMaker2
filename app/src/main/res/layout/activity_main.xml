@@ -3,29 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="start"
     android:background="?attr/colorPrimary"
+
     android:orientation="vertical"
     android:padding="@dimen/padding_medium"
-    android:layout_gravity="start"
     tools:context=".MainActivity">
 
     <TextView
         style="@style/TextTitle"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_medium"
-        />
+        android:textSize="@dimen/text_medium" />
+
     <Button
         android:id="@+id/find"
         style="@style/ButtonMain"
-        app:icon="@drawable/magnifier"
-        app:iconGravity="textStart"
-        app:iconTint="@color/black"
         android:text="@string/Button_1"
         android:textSize="22sp"
-        />
+        app:icon="@drawable/magnifier"
+        app:iconGravity="textStart"
+        app:iconTint="@color/black" />
 
     <Button
         android:id="@+id/media"
@@ -43,6 +44,5 @@
         android:text="@string/Button_3"
         app:icon="@drawable/settings"
         app:iconGravity="textStart"
-        app:iconTint="@color/black"
-        />
+        app:iconTint="@color/black" />
 </LinearLayout>

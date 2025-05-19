@@ -9,6 +9,7 @@
     android:orientation="vertical"
 
     android:layout_gravity="start"
+
     tools:context=".StActivity">
 
     <LinearLayout
