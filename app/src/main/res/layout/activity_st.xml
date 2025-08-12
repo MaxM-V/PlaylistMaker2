@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorOnSecondary"
+    android:orientation="vertical"
+
+    android:layout_gravity="start"
+
+    tools:context=".StActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_small4"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/margin_medium12"
+
+
+
+
+        >
+        <ImageButton
+            style="@style/ImageButtonSettingsBackArrow"
+
+            android:id="@+id/arrowBack"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/TextSettings"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="@dimen/text_medium"
+            android:layout_marginStart="@dimen/margin_medium12"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ButtonDesk"
+        android:id="@+id/switchS"
+
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <TextView
+
+            style="@style/TextButtonSettings"
+            android:text="@string/TextSettingsButton2"
+            />
+
+        <ImageButton
+            style="@style/Switch"
+
+
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ButtonDesk"
+        android:id="@+id/share"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <TextView
+            style="@style/TextButtonSettings"
+            android:text="@string/TextSettingsButton3"
+            />
+        <ImageButton
+            style="@style/ImageButtonSetting"
+
+            android:src="@drawable/share"
+            />
+    </LinearLayout>
+    <LinearLayout
+
+        style="@style/ButtonDesk"
+        android:id="@+id/support"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <TextView
+
+            style="@style/TextButtonSettings"
+            android:text="@string/TextSettingsButton4"
+            />
+        <ImageButton
+
+
+            style="@style/ImageButtonSetting"
+
+            android:src="@drawable/support"
+            />
+    </LinearLayout>
+    <LinearLayout
+        style="@style/ButtonDesk"
+        android:id="@+id/user"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        >
+        <TextView
+            style="@style/TextButtonSettings"
+            android:text="@string/TextSettingsButton5"
+            />
+        <ImageButton
+            style="@style/ImageButtonSetting"
+            android:src="@drawable/arrowf"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<resources>
+
+    <dimen name= "padding_small">8dp</dimen>
+    <dimen name= "padding_medium12">12dp</dimen>
+    <dimen name= "padding_medium">16dp</dimen>
+    <dimen name= "padding_medium20">20dp</dimen>
+    <dimen name= "padding_large">24dp</dimen>
+    <dimen name= "padding40">40dp</dimen>
+    <dimen name= "padding8.5">8.5dp</dimen>
+    <dimen name= "margin_small">8dp</dimen>
+    <dimen name= "margin4">4dp</dimen>
+    <dimen name= "margin32">32dp</dimen>
+    <dimen name= "margin_medium12">12dp</dimen>
+    <dimen name= "margin_medium">16dp</dimen>
+    <dimen name= "margin_large">24dp</dimen>
+    <dimen name= "text_small">16dp</dimen>
+    <dimen name= "text_medium">22sp</dimen>
+    <dimen name= "text_large">16dp</dimen>
+    <dimen name= "zero">0dp</dimen>
+    <dimen name= "radius_b">16dp</dimen>
+    <dimen name="padding_small4">4dp</dimen>
+    <dimen name= "text_medium19">19dp</dimen>
+    <dimen name= "padding30">30dp</dimen>
+    <dimen name= "padding10">10dp</dimen>
+    <dimen name= "margin0">0dp</dimen>
+    <dimen name= "margin13">13dp</dimen>
+    <dimen name= "text13">13dp</dimen>
+    <dimen name= "size14">14dp</dimen>
+
+</resources>

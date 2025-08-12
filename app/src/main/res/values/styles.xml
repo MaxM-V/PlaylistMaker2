@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextMenu">
+        <item name="android:textSize">22sp</item>
+</style>
+    <style name="TextTitle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="fontFamily">@font/ys_display_medium</item>
+
+    </style>
+    <style name="MessageTextStyle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">26sp</item>
+        <item name="fontFamily">@font/ys_display_medium</item>
+    </style>
+    <style name="ButtonMain" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:drawablePadding">@dimen/padding_small</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="fontFamily">@font/ys_display_medium</item>
+        <item name="cornerRadius">@dimen/radius_b</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+    <style name="ImageButtonSettingsBackArrow">
+        <item name="background">@color/white</item>
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+       <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">center</item>
+      <item name="android:padding">@dimen/padding_medium20</item>
+        <item name="tint">@color/BlackGrey</item>
+        <item name="android:src">@drawable/arrowbig</item>
+
+    </style>
+    <style name="ButtonDesk">
+    <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_marginBottom">@dimen/padding_medium</item>
+        <item name="android:padding">@dimen/padding_small4</item>
+        <item name="paddingStart">@dimen/margin_medium</item>
+
+</style>
+    <style name="TextButtonSettings">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:layout_marginStart">@dimen/padding_medium12</item>
+        <item name="fontFamily">@font/ys_display_medium</item>
+    </style>
+    <style name="ImageButtonSetting">
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:scaleType">center</item>
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="tint">@color/Grey</item>
+        <item name="android:layout_marginEnd">@dimen/zero</item>
+
+    </style>
+    <style name="Switch">
+    <item name="android:background">@null</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:scaleType">center</item>
+
+    <item name="tint">@color/Grey</item>
+    <item name="android:layout_marginEnd">@dimen/zero</item>
+        <item name="android:src">@drawable/resource_switch</item>
+    </style>
+</resources>
