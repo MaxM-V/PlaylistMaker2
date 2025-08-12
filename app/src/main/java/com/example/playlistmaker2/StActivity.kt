@@ -22,6 +22,7 @@ class StActivity : AppCompatActivity() {
         val buttonSupport = findViewById<LinearLayout>(R.id.support)
         val buttonUserAgreement = findViewById<LinearLayout>(R.id.user)
 
+
         buttonBack.setOnClickListener{
             finish()
         }

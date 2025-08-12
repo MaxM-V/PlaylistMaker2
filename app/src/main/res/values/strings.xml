@@ -17,5 +17,8 @@
     <string name="URLYPLegal">https://yandex.ru/legal/practicum_offer</string>
     <string name="ShareTitle">Поделиться приложением через:</string>
     <string name="mailTo">mailto:</string>
+    <string name="artist">bee</string>
+    <string name="timetrack">3.04</string>
+    <string name="trackName">Ели мясо мужики</string>
 
 </resources>

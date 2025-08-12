@@ -15,17 +15,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="horizontal"
         android:gravity="center_vertical"
-
-
         >
 
         <ImageButton
             style="@style/ImageButtonSettingsBackArrow"
             android:id="@+id/arrowBack"
-
              />
 
         <TextView
@@ -33,7 +29,6 @@
             android:text="@string/Button_1"
             android:textColor="?attr/colorSecondaryVariant"
             android:textSize="@dimen/text_medium"
-
             android:layout_margin="10dp"
             android:layout_marginLeft="@dimen/margin_medium12"
             android:layout_marginTop="@dimen/margin_medium12"
@@ -48,7 +43,7 @@
         android:layout_marginTop="@dimen/margin_small"
         android:layout_marginBottom="@dimen/margin_small"
         android:background="@drawable/b_g_search"
-        android:padding="8.5dp">
+        android:padding="@dimen/padding8.5">
 
 
         <ImageView
@@ -57,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="@dimen/margin4"
             android:layout_marginEnd="@dimen/margin_small"
             android:src="@drawable/magnifier" />
 
@@ -66,14 +61,13 @@
             android:id="@+id/inputSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="@dimen/margin32"
             android:background="@android:color/transparent"
             android:hint="@string/SearchText"
-
             android:inputType="text"
             android:maxLength="50"
             android:maxLines="1"
-            android:paddingEnd="40dp"
+            android:paddingEnd="@dimen/padding40"
 
             android:textColor="?attr/colorSecondaryContainer"
             android:textColorHint="?attr/colorOnPrimary"
@@ -83,11 +77,20 @@
 
         <ImageView
             android:id="@+id/clearIcon"
-            android:layout_width="14dp"
-            android:layout_height="14dp"
+            android:layout_width="@dimen/size14"
+            android:layout_height="@dimen/size14"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="@dimen/margin_small"
             android:src="@drawable/cross12x12"
             android:visibility="gone" />
     </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/findrv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/recycler_view_search"
+        tools:itemCount="8"/>
 </LinearLayout>
