@@ -20,5 +20,9 @@
     <string name="artist">bee</string>
     <string name="timetrack">3.04</string>
     <string name="trackName">Ели мясо мужики</string>
+    <string name="noSearch">Ничего не нашлось</string>
+    <string name="errorInternet">Проблемы со связью</string>
+    <string name="errorDownload">Загрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="update">Обновить</string>
 
 </resources>

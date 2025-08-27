@@ -49,7 +49,6 @@
 
         <ImageView
             android:id="@+id/searchIcon"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start|center_vertical"
@@ -62,6 +61,8 @@
             android:id="@+id/inputSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             android:layout_marginStart="@dimen/margin32"
             android:background="@android:color/transparent"
             android:hint="@string/SearchText"
@@ -85,13 +86,88 @@
             android:src="@drawable/cross12x12"
             android:visibility="gone" />
     </FrameLayout>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/findrv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
-        tools:listitem="@layout/recycler_view_search"
-        tools:itemCount="8"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="8"
+        tools:listitem="@layout/recycler_view_search" />
+
+    <LinearLayout
+        android:id="@+id/notSearch"
+        android:orientation="vertical"
+        android:gravity="top|center_horizontal"
+        android:layout_marginTop="102dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@drawable/not_search"
+            android:layout_width="120dp"
+            android:layout_height="120dp"/>
+        <TextView
+            android:text="@string/noSearch"
+            android:fontFamily="@font/ys_display_medium"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="@dimen/text19"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/errorInternet"
+        android:orientation="vertical"
+        android:gravity="top|center_horizontal"
+        android:layout_marginTop="102dp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:src="@drawable/not_internet"
+            android:layout_width="120dp"
+            android:layout_height="120dp"/>
+
+        <TextView
+            android:text="@string/errorInternet"
+            android:fontFamily="@font/ys_display_medium"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="@dimen/text19"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="@string/errorDownload"
+            android:fontFamily="@font/ys_display_medium"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="@dimen/text19"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/retryButton"
+            android:fontFamily="@font/ys_display_medium"
+            android:text="@string/update"
+            android:textAllCaps="false"
+            android:textColor="?attr/colorOnSecondary"
+            android:backgroundTint="?attr/colorSecondaryVariant"
+            android:layout_marginTop="16dp"
+            app:cornerRadius="54dp"
+            android:textSize="@dimen/text14"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            />
+
+    </LinearLayout>
+</RelativeLayout>
 </LinearLayout>

@@ -10,7 +10,6 @@
     android:orientation="horizontal"
     android:paddingHorizontal="@dimen/padding30"
     android:paddingVertical="@dimen/padding10"
-
     android:layout_marginBottom="@dimen/zero"
     android:clickable="true"
     android:focusable="true"
@@ -87,10 +86,11 @@ android:fontFamily="@font/ys_display_regular"
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         style="@style/ImageButtonSetting"
         android:layout_marginEnd="@dimen/margin_medium12"
-
         android:src="@drawable/arrowf"/>
+
+
+
 </LinearLayout>
 
