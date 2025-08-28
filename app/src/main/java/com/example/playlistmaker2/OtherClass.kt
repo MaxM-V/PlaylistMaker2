@@ -3,6 +3,12 @@ package com.example.playlistmaker2
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import retrofit2.Call
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Retrofit
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 public class NetworkUtils {
 
@@ -22,3 +28,26 @@ public class NetworkUtils {
         }
     }
 }
+
+
+class MusicRequest(val text: String)
+
+
+    data class TrackITunes(val trackName: String,
+                       val artistName: String,
+                       val trackTimeMillis: Int,
+                       val artworkUrl100: String)
+
+
+data class SearchResponseMusic(
+    val resultCount: Int,
+    val results: List<TrackITunes>
+)
+
+interface MusicApi {
+    @GET("/search")
+    fun searchTrack (@Query("term") term:String): Call<SearchResponseMusic>
+
+}
+
+
