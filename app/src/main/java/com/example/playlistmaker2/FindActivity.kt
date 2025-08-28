@@ -62,6 +62,9 @@ class FindActivity : AppCompatActivity() {
 
         clearButton.setOnClickListener {
             input.setText("")
+            currencyTrackList.clear()
+            adapter.notifyDataSetChanged()
+            showState(listVisible = false, notFoundVisible = false, errorVisible = false)
             hideKB()
         }
 
