@@ -33,7 +33,9 @@ public class NetworkUtils {
 class MusicRequest(val text: String)
 
 
-    data class TrackITunes(val trackName: String,
+    data class TrackITunes(
+        val trackId: Int,
+        val trackName: String,
                        val artistName: String,
                        val trackTimeMillis: Int,
                        val artworkUrl100: String)

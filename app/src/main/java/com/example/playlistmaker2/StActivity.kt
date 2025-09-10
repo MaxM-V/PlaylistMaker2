@@ -10,18 +10,25 @@ import androidx.core.view.WindowInsetsCompat
 import android.net.Uri
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatDelegate
+import com.google.android.material.switchmaterial.SwitchMaterial
 
 class StActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_st)
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
         val buttonShare = findViewById<LinearLayout>(R.id.share)
-        val buttonSwitch = findViewById<LinearLayout>(R.id.switchS)
+        val buttonSwitch = findViewById<SwitchMaterial>(R.id.switchS)
         val buttonSupport = findViewById<LinearLayout>(R.id.support)
         val buttonUserAgreement = findViewById<LinearLayout>(R.id.user)
 
+        buttonSwitch.isChecked = (applicationContext as App)
+            .getSharedPreferences("playlist_maker_prefs", MODE_PRIVATE)
+            .getBoolean("dark_theme_enabled", false)
 
         buttonBack.setOnClickListener{
             finish()
@@ -31,8 +38,8 @@ class StActivity : AppCompatActivity() {
 shareApp()
         }
 
-        buttonSwitch.setOnClickListener{
-
+        buttonSwitch.setOnCheckedChangeListener{switcher, isChecked ->
+            (applicationContext as App).switchTheme(isChecked)
         }
 
         buttonSupport.setOnClickListener{

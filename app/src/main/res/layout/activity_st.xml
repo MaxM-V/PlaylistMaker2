@@ -41,7 +41,6 @@
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"
-        android:id="@+id/switchS"
 
         android:layout_marginTop="20dp"
         android:clickable="true"
@@ -49,17 +48,17 @@
         android:foreground="?attr/selectableItemBackground"
         >
         <TextView
-
             style="@style/TextButtonSettings"
             android:text="@string/TextSettingsButton2"
             />
-
-        <ImageButton
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
             style="@style/Switch"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-
-
-            />
     </LinearLayout>
     <LinearLayout
         style="@style/ButtonDesk"
