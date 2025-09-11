@@ -99,16 +99,6 @@
         android:layout_marginBottom="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerHistory"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="8"
-        tools:listitem="@layout/recycler_view_search" />
-
-    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerSearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -116,6 +106,23 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="8"
         android:visibility="gone"
+        tools:listitem="@layout/recycler_view_search" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerHistory"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="8"
         tools:listitem="@layout/recycler_view_search" />
 
     <com.google.android.material.button.MaterialButton
@@ -137,7 +144,7 @@
         app:cornerRadius="54dp"
         android:textSize="@dimen/text14"
         />
-
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/notSearch"
         android:orientation="vertical"
