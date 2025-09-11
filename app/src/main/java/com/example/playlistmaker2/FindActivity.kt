@@ -1,5 +1,6 @@
 package com.example.playlistmaker2
 
+import AdapterTrack
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
@@ -18,25 +19,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.security.KeyStore.TrustedCertificateEntry
 import java.text.SimpleDateFormat
 import java.util.Locale
 
 class FindActivity : AppCompatActivity() {
 
-    var searchText: String = ""
-    lateinit var input: EditText
-    val keyStart = "selectionStart"
-    val keyEnd = "selectionEnd"
-    val currencyTrackList = arrayListOf<Track>()
+    private var searchText: String = ""
+    private lateinit var input: EditText
+    private val currencyTrackList = arrayListOf<Track>()
 
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerSearch: RecyclerView
+    private lateinit var recyclerHistory: RecyclerView
     private lateinit var notSearch: LinearLayout
     private lateinit var errorInternet: LinearLayout
+    private lateinit var historyTitle: TextView
+    private lateinit var clearHistoryButton: Button
     private lateinit var adapter: AdapterTrack
+    private lateinit var historyAdapter: AdapterTrack
+    private lateinit var historySearch: HistorySearch
+
+    private val keyStart = "selectionStart"
+    private val keyEnd = "selectionEnd"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find)
+
+        historySearch = HistorySearch(this)
+
 
         if (NetworkUtils.isInternetAvailable(this)) {
             Toast.makeText(this, "Internet is available", Toast.LENGTH_SHORT).show()
@@ -44,33 +57,59 @@ class FindActivity : AppCompatActivity() {
             Toast.makeText(this, "No internet connection", Toast.LENGTH_SHORT).show()
         }
 
+
         val buttonBack = findViewById<ImageButton>(R.id.arrowBack)
         val clearButton = findViewById<ImageView>(R.id.clearIcon)
+        val retryButton: Button = findViewById(R.id.retryButton)
         input = findViewById(R.id.inputSearch)
-        recyclerView = findViewById(R.id.findrv)
+        recyclerSearch = findViewById(R.id.recyclerSearch)
+        recyclerHistory = findViewById(R.id.recyclerHistory)
         notSearch = findViewById(R.id.notSearch)
         errorInternet = findViewById(R.id.errorInternet)
-        val retryButton: Button = findViewById(R.id.retryButton)
+        historyTitle = findViewById(R.id.historyTitle)
+        clearHistoryButton = findViewById(R.id.clearHistoryButton)
 
-        adapter = AdapterTrack(currencyTrackList)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+
+        adapter = AdapterTrack(currencyTrackList) { track ->
+            historySearch.saveTrack(track)
+        }
+        recyclerSearch.layoutManager = LinearLayoutManager(this)
+        recyclerSearch.adapter = adapter
+
+        historyAdapter = AdapterTrack(mutableListOf()) { track ->
+            historySearch.saveTrack(track)
+
+        }
+        recyclerHistory.layoutManager = LinearLayoutManager(this)
+        recyclerHistory.adapter = historyAdapter
+        updateHistory()
 
         buttonBack.setOnClickListener {
             finish()
         }
 
+
+        clearHistoryButton.setOnClickListener {
+            historySearch.clearHistory()
+            updateHistory()
+        }
+
+
         clearButton.setOnClickListener {
             input.setText("")
             currencyTrackList.clear()
             adapter.notifyDataSetChanged()
-            showState(listVisible = false, notFoundVisible = false, errorVisible = false)
+            showSearchResults(false)
             hideKB()
+            updateHistory()
         }
+
 
         retryButton.setOnClickListener {
             performSearch(searchText)
         }
+
+
         input.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val query = input.text.toString()
@@ -84,92 +123,117 @@ class FindActivity : AppCompatActivity() {
 
         val simpleTextWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                clearButton.visibility = clearButtonVisibility(s)
                 searchText = s.toString()
-              //  performSearch(searchText)
+                clearButton.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
+                if (s.isNullOrEmpty() && input.hasFocus()) {
+                    updateHistory()
+                } else {
+                    showHistory(false)
+                }
             }
-
             override fun afterTextChanged(s: Editable?) {}
         }
         input.addTextChangedListener(simpleTextWatcher)
+
+
+        input.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus && input.text.isEmpty()) {
+                updateHistory()
+            } else {
+                showHistory(false)
+            }
+        }
     }
 
     fun performSearch(query: String) {
         currencyTrackList.clear()
         if (query.isEmpty()) {
             adapter.notifyDataSetChanged()
-            showState(listVisible = false, notFoundVisible = false, errorVisible = false)
+            showSearchResults(false)
             return
         }
-        showState(listVisible = true, notFoundVisible = false, errorVisible = false)
 
-        val call = RetrofitITunes.apiSearch.searchTrack(searchText)
-        call.enqueue(object : retrofit2.Callback<SearchResponseMusic> {
+        showSearchResults(true)
+
+        val call = RetrofitITunes.apiSearch.searchTrack(query)
+        call.enqueue(object : Callback<SearchResponseMusic> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
                 call: Call<SearchResponseMusic>,
-                response: retrofit2.Response<SearchResponseMusic>
+                response: Response<SearchResponseMusic>
             ) {
                 if (response.isSuccessful) {
                     val responseJSON = response.body()
                     if (responseJSON != null) {
                         val tracks = responseJSON.results.map { dto ->
                             Track(
+                                dto.trackId,
                                 dto.trackName,
                                 dto.artistName,
                                 SimpleDateFormat("mm:ss", Locale.getDefault())
                                     .format(dto.trackTimeMillis.toLong()),
-                                dto.artworkUrl100 // картинка альбома
+                                dto.artworkUrl100
                             )
                         }
                         currencyTrackList.addAll(tracks)
                         adapter.notifyDataSetChanged()
 
                         if (tracks.isEmpty()) {
-                            showState(
-                                listVisible = false,
-                                notFoundVisible = true,
-                                errorVisible = false
-                            )
+                            recyclerSearch.visibility = View.GONE
+                            notSearch.visibility = View.VISIBLE
+                            errorInternet.visibility = View.GONE
                         } else {
-                            showState(
-                                listVisible = true,
-                                notFoundVisible = false,
-                                errorVisible = false
-                            )
+                            recyclerSearch.visibility = View.VISIBLE
+                            notSearch.visibility = View.GONE
+                            errorInternet.visibility = View.GONE
                         }
                     } else {
-                        showState(
-                            listVisible = false,
-                            notFoundVisible = false,
-                            errorVisible = true
-                        )
+                        recyclerSearch.visibility = View.GONE
+                        notSearch.visibility = View.GONE
+                        errorInternet.visibility = View.VISIBLE
                     }
                 } else {
-                    showState(listVisible = false, notFoundVisible = false, errorVisible = true)
+                    recyclerSearch.visibility = View.GONE
+                    notSearch.visibility = View.GONE
+                    errorInternet.visibility = View.VISIBLE
                 }
             }
 
             override fun onFailure(call: Call<SearchResponseMusic>, t: Throwable) {
-                showState(listVisible = false, notFoundVisible = false, errorVisible = true)
+                recyclerSearch.visibility = View.GONE
+                notSearch.visibility = View.GONE
+                errorInternet.visibility = View.VISIBLE
             }
         })
     }
 
-    private fun showState(listVisible: Boolean, notFoundVisible: Boolean, errorVisible: Boolean) {
-        recyclerView.visibility = if (listVisible) View.VISIBLE else View.GONE
-        notSearch.visibility = if (notFoundVisible) View.VISIBLE else View.GONE
-        errorInternet.visibility = if (errorVisible) View.VISIBLE else View.GONE
+    fun updateHistory() {
+        val history = historySearch.getHistory()
+        if (history.isNotEmpty()) {
+            historyAdapter.updateList(history)
+            showHistory(true)
+        } else {
+            showHistory(false)
+        }
     }
 
-    private fun clearButtonVisibility(s: CharSequence?): Int {
-        return if (s.isNullOrEmpty()) {
-            View.GONE
-        } else {
-            View.VISIBLE
-        }
+    fun showHistory(show: Boolean) {
+        historyTitle.visibility = if (show) View.VISIBLE else View.GONE
+        clearHistoryButton.visibility = if (show) View.VISIBLE else View.GONE
+        recyclerHistory.visibility = if (show) View.VISIBLE else View.GONE
+        recyclerSearch.visibility = View.GONE
+        notSearch.visibility = View.GONE
+        errorInternet.visibility = View.GONE
+    }
+
+    fun showSearchResults(show: Boolean) {
+        recyclerSearch.visibility = if (show) View.VISIBLE else View.GONE
+        recyclerHistory.visibility = View.GONE
+        historyTitle.visibility = View.GONE
+        clearHistoryButton.visibility = View.GONE
+//        notSearch.visibility = View.GONE
+//        errorInternet.visibility = View.GONE
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -187,44 +251,8 @@ class FindActivity : AppCompatActivity() {
         input.postDelayed({ input.requestFocus() }, 300)
     }
 
-    fun hideKB() {
+    private fun hideKB() {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(input.windowToken, 0)
-    }
-
-    class AdapterTrack(
-        private val trackL: List<Track>
-    ) : RecyclerView.Adapter<AdapterTrack.PersonViewHolder>() {
-        class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val nameTrack: TextView = itemView.findViewById(R.id.trackname)
-            val nameArtists: TextView = itemView.findViewById(R.id.artistname)
-            val timeTrack: TextView = itemView.findViewById(R.id.trackTime)
-            val trackImage: ImageView = itemView.findViewById(R.id.icon_group)
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.recycler_view_search, parent, false)
-            return PersonViewHolder(view)
-        }
-
-        override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
-            val track = trackL[position]
-            holder.nameTrack.text = track.trackName
-            holder.nameArtists.text = track.artistName
-            holder.timeTrack.text = track.trackTime
-            val radiusDp = 2f
-            val scale = holder.itemView.context.resources.displayMetrics.density
-            val radiusPx = (radiusDp * scale).toInt()
-
-            Glide.with(holder.itemView)
-                .load(track.artworkUrl100)
-                .placeholder(R.drawable.placeholder)
-                .error(R.drawable.placeholder)
-                .transform(RoundedCorners(radiusPx))
-                .into(holder.trackImage)
-        }
-
-        override fun getItemCount(): Int = trackL.size
     }
 }
