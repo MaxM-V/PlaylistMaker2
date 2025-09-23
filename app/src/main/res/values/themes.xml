@@ -9,7 +9,7 @@
         <item name="colorSecondary">@color/LightGrey</item>
         <item name="color">@color/Grey</item>
         <item name="colorSecondaryContainer">@color/black</item>
-        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorSecondaryVariant">@color/BlackGrey</item>
         <item name="colorOnSecondary">@color/white</item>
         <item name="colorOnBackground">@color/white</item>
 
