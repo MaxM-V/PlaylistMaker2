@@ -72,13 +72,21 @@ class FindActivity : AppCompatActivity() {
 
         adapter = AdapterTrack(currencyTrackList) { track ->
             historySearch.saveTrack(track)
+            val click = Intent(this, MediaPlayer::class.java).apply {
+                putExtra("TRACK", track)
+            }
+            startActivity(click)
+
         }
         recyclerSearch.layoutManager = LinearLayoutManager(this)
         recyclerSearch.adapter = adapter
 
         historyAdapter = AdapterTrack(mutableListOf()) { track ->
             historySearch.saveTrack(track)
-
+            val click = Intent(this, MediaPlayer::class.java).apply {
+                putExtra("TRACK", track)
+            }
+            startActivity(click)
         }
         recyclerHistory.layoutManager = LinearLayoutManager(this)
         recyclerHistory.adapter = historyAdapter
@@ -173,7 +181,11 @@ class FindActivity : AppCompatActivity() {
                                 dto.artistName,
                                 SimpleDateFormat("mm:ss", Locale.getDefault())
                                     .format(dto.trackTimeMillis.toLong()),
-                                dto.artworkUrl100
+                                dto.artworkUrl100,
+                                dto.collectionName,
+                                dto.releaseDate,
+                                dto.primaryGenreName,
+                                dto.country
                             )
                         }
                         currencyTrackList.addAll(tracks)
@@ -232,8 +244,7 @@ class FindActivity : AppCompatActivity() {
         recyclerHistory.visibility = View.GONE
         historyTitle.visibility = View.GONE
         clearHistoryButton.visibility = View.GONE
-//        notSearch.visibility = View.GONE
-//        errorInternet.visibility = View.GONE
+
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -252,7 +263,7 @@ class FindActivity : AppCompatActivity() {
     }
 
     private fun hideKB() {
-        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(input.windowToken, 0)
     }
 }

@@ -24,5 +24,10 @@
     <string name="errorInternet">Проблемы со связью</string>
     <string name="errorDownload">Загрузка не удалась. Проверьте подключение к интернету</string>
     <string name="update">Обновить</string>
+    <string name="longTime">Длительность</string>
+    <string name="album">Альбом</string>
+    <string name="year">Год</string>
+    <string name="style">Жанр</string>
+    <string name="country">Страна</string>
 
 </resources>
