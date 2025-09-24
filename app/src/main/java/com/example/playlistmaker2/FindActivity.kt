@@ -73,15 +73,7 @@ class FindActivity : AppCompatActivity() {
         adapter = AdapterTrack(currencyTrackList) { track ->
             historySearch.saveTrack(track)
             val click = Intent(this, MediaPlayer::class.java).apply {
-                putExtra("TRACK_ID", track.trackId)
-                putExtra("TRACK_NAME", track.trackName)
-                putExtra("ARTIST_NAME", track.artistName)
-                putExtra("DURATION", track.trackTime)
-                putExtra("ALBUM_NAME", track.collectionName)
-                putExtra("RELEASE_DATE", track.releaseDate)
-                putExtra("GENRE", track.primaryGenreName)
-                putExtra("COUNTRY", track.country)
-                putExtra("ARTWORK_URL", track.artworkUrl100)
+                putExtra("TRACK", track)
             }
             startActivity(click)
 
@@ -92,15 +84,7 @@ class FindActivity : AppCompatActivity() {
         historyAdapter = AdapterTrack(mutableListOf()) { track ->
             historySearch.saveTrack(track)
             val click = Intent(this, MediaPlayer::class.java).apply {
-                putExtra("TRACK_ID", track.trackId)
-                putExtra("TRACK_NAME", track.trackName)
-                putExtra("ARTIST_NAME", track.artistName)
-                putExtra("DURATION", track.trackTime)
-                putExtra("ALBUM_NAME", track.collectionName)
-                putExtra("RELEASE_DATE", track.releaseDate)
-                putExtra("GENRE", track.primaryGenreName)
-                putExtra("COUNTRY", track.country)
-                putExtra("ARTWORK_URL", track.artworkUrl100)
+                putExtra("TRACK", track)
             }
             startActivity(click)
         }
