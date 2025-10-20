@@ -4,8 +4,8 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class Track (
-    val trackId: Int,
+data class Track(
+    val trackId: Long,
     val trackName: String?,
     val artistName: String?,
     val trackTime: String,
@@ -13,7 +13,8 @@ class Track (
     val collectionName: String?,
     val releaseDate: String?,
     val primaryGenreName: String?,
-    val country: String?
+    val country: String?,
+    val previewUrl: String?
 ):Parcelable
 {
     fun getCoverArtwork(): String {

@@ -24,6 +24,8 @@ import retrofit2.Response
 import java.security.KeyStore.TrustedCertificateEntry
 import java.text.SimpleDateFormat
 import java.util.Locale
+import android.os.Handler
+import android.os.Looper
 
 class FindActivity : AppCompatActivity() {
 
@@ -40,9 +42,17 @@ class FindActivity : AppCompatActivity() {
     private lateinit var adapter: AdapterTrack
     private lateinit var historyAdapter: AdapterTrack
     private lateinit var historySearch: HistorySearch
+    private lateinit var progressBar: ProgressBar
+
 
     private val keyStart = "selectionStart"
     private val keyEnd = "selectionEnd"
+    private val searchDebounceDelay = 1000L
+    private val searchHandler = Handler(Looper.getMainLooper())
+    private var searchRunnable: Runnable? = null
+    private var isClickAllowed = true
+    private val clickDebounceDelay = 2000L
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,26 +78,29 @@ class FindActivity : AppCompatActivity() {
         errorInternet = findViewById(R.id.errorInternet)
         historyTitle = findViewById(R.id.historyTitle)
         clearHistoryButton = findViewById(R.id.clearHistoryButton)
-
+        progressBar = findViewById(R.id.progressBar)
 
         adapter = AdapterTrack(currencyTrackList) { track ->
-            historySearch.saveTrack(track)
-            val click = Intent(this, MediaPlayer::class.java).apply {
-                putExtra("TRACK", track)
+            if (clickDebounce()) {
+                historySearch.saveTrack(track)
+                val click = Intent(this, MediaPlayerActivity::class.java).apply {
+                    putExtra("TRACK", track)
+                }
+                startActivity(click)
             }
-            startActivity(click)
-
         }
         recyclerSearch.layoutManager = LinearLayoutManager(this)
         recyclerSearch.adapter = adapter
 
         historyAdapter = AdapterTrack(mutableListOf()) { track ->
-            historySearch.saveTrack(track)
-            val click = Intent(this, MediaPlayer::class.java).apply {
+            if (clickDebounce()){
+                historySearch.saveTrack(track)
+            val click = Intent(this, MediaPlayerActivity::class.java).apply {
                 putExtra("TRACK", track)
             }
             startActivity(click)
         }
+    }
         recyclerHistory.layoutManager = LinearLayoutManager(this)
         recyclerHistory.adapter = historyAdapter
         updateHistory()
@@ -134,10 +147,17 @@ class FindActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 searchText = s.toString()
                 clearButton.visibility = if (s.isNullOrEmpty()) View.GONE else View.VISIBLE
-                if (s.isNullOrEmpty() && input.hasFocus()) {
+                searchRunnable?.let { searchHandler.removeCallbacks(it) }
+
+                if (s.isNullOrEmpty()) {
+                    showSearchResults(false)
                     updateHistory()
                 } else {
-                    showHistory(false)
+
+                    searchRunnable = Runnable {
+                        performSearch(searchText)
+                    }
+                    searchHandler.postDelayed(searchRunnable!!, searchDebounceDelay)
                 }
             }
             override fun afterTextChanged(s: Editable?) {}
@@ -163,6 +183,8 @@ class FindActivity : AppCompatActivity() {
         }
 
         showSearchResults(true)
+        progressBar.visibility = View.VISIBLE
+
 
         val call = RetrofitITunes.apiSearch.searchTrack(query)
         call.enqueue(object : Callback<SearchResponseMusic> {
@@ -171,12 +193,13 @@ class FindActivity : AppCompatActivity() {
                 call: Call<SearchResponseMusic>,
                 response: Response<SearchResponseMusic>
             ) {
+                progressBar.visibility = View.GONE
                 if (response.isSuccessful) {
                     val responseJSON = response.body()
                     if (responseJSON != null) {
                         val tracks = responseJSON.results.map { dto ->
                             Track(
-                                dto.trackId,
+                                dto.trackId.toLong(),
                                 dto.trackName,
                                 dto.artistName,
                                 SimpleDateFormat("mm:ss", Locale.getDefault())
@@ -185,7 +208,8 @@ class FindActivity : AppCompatActivity() {
                                 dto.collectionName,
                                 dto.releaseDate,
                                 dto.primaryGenreName,
-                                dto.country
+                                dto.country,
+                                dto.previewUrl
                             )
                         }
                         currencyTrackList.addAll(tracks)
@@ -213,6 +237,7 @@ class FindActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<SearchResponseMusic>, t: Throwable) {
+                progressBar.visibility = View.GONE
                 recyclerSearch.visibility = View.GONE
                 notSearch.visibility = View.GONE
                 errorInternet.visibility = View.VISIBLE
@@ -265,5 +290,17 @@ class FindActivity : AppCompatActivity() {
     private fun hideKB() {
         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(input.windowToken, 0)
+    }
+
+
+    private fun clickDebounce(): Boolean {
+        val current = isClickAllowed
+        if (isClickAllowed) {
+            isClickAllowed = false
+            Handler(Looper.getMainLooper()).postDelayed({
+                isClickAllowed = true
+            }, clickDebounceDelay)
+        }
+        return current
     }
 }
