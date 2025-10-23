@@ -42,7 +42,8 @@ class MusicRequest(val text: String)
         val collectionName: String?,
         val releaseDate: String?,
         val primaryGenreName: String?,
-        val country: String?)
+        val country: String?,
+        val previewUrl: String?)
 
 
 data class SearchResponseMusic(
@@ -52,7 +53,7 @@ data class SearchResponseMusic(
 
 interface MusicApi {
     @GET("/search")
-    fun searchTrack (@Query("term") term:String): Call<SearchResponseMusic>
+    fun searchTrack (@Query("term") term:String, @Query("entity") entity: String = "song" ): Call<SearchResponseMusic>
 
 }
 

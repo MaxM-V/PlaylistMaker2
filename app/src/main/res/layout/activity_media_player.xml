@@ -111,10 +111,24 @@
         android:backgroundTint="?attr/colorOnSecondary"
         android:contentDescription="play"
         android:src="@drawable/play"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@id/addTracklist"
         app:layout_constraintEnd_toStartOf="@id/like"
         app:layout_constraintStart_toEndOf="@id/addTracklist"
         app:layout_constraintTop_toBottomOf="@id/groupName" />
+    <ImageButton
+        android:id="@+id/Pause"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+
+        android:backgroundTint="?attr/colorOnSecondary"
+        android:contentDescription="Pause"
+        android:src="@drawable/pause"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/playAndPause"
+        app:layout_constraintStart_toStartOf="@id/playAndPause"
+        app:layout_constraintEnd_toEndOf="@id/playAndPause"
+        app:layout_constraintTop_toTopOf="@id/playAndPause" />
 
     <ImageButton
         android:id="@+id/like"
