@@ -53,7 +53,7 @@ data class SearchResponseMusic(
 
 interface MusicApi {
     @GET("/search")
-    fun searchTrack (@Query("term") term:String): Call<SearchResponseMusic>
+    fun searchTrack (@Query("term") term:String, @Query("entity") entity: String = "song" ): Call<SearchResponseMusic>
 
 }
 

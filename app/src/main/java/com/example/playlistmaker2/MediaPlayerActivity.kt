@@ -98,6 +98,8 @@ class MediaPlayerActivity : AppCompatActivity() {
         styleCurrency.text = genre
         countryCurrency.text = country
 
+        currentTime.text = "00:00"
+
         val radiusDp = 8f
         val scale = resources.displayMetrics.density
         val radiusPx = (radiusDp * scale).toInt()
@@ -130,6 +132,7 @@ class MediaPlayerActivity : AppCompatActivity() {
                     }
                     setOnCompletionListener {
                         stopPlayback()
+                        currentTime.text = "00:00"
                     }
                 }
             } else {

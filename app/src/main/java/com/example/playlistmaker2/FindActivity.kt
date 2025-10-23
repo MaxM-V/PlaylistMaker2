@@ -186,7 +186,7 @@ class FindActivity : AppCompatActivity() {
         progressBar.visibility = View.VISIBLE
 
 
-        val call = RetrofitITunes.apiSearch.searchTrack(query)
+        val call = RetrofitITunes.apiSearch.searchTrack(query, "song")
         call.enqueue(object : Callback<SearchResponseMusic> {
             @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
